@@ -11,6 +11,9 @@
             "email": "joaoramajo744@gmail.com"
         }
     ],
+    "scripts": {
+        "stan": "vendor/bin/phpstan analyse -l 5 src"
+    },
     "require": {
         "nikic/fast-route": "^1.3",
         "monolog/monolog": "^3.9",

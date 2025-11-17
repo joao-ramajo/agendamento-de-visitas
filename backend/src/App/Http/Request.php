@@ -9,7 +9,7 @@ class Request
 
     public function __construct()
     {
-        $this->query = $_GET ?? [];
+        $this->query = $_GET;
         $this->body = json_decode(file_get_contents('php://input'), true) ?? [];
     }
 
