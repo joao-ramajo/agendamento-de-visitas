@@ -2,7 +2,7 @@
     "name": "noweb/base",
     "autoload": {
         "psr-4": {
-            "Noweb\\Base\\": "src/"
+            "App\\": "src/App/"
         }
     },
     "authors": [

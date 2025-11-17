@@ -2,6 +2,7 @@
 
 require_once dirname(__DIR__, 1) . '/vendor/autoload.php';
 
+use DI\ContainerBuilder;
 use Dotenv\Dotenv;
 
 ini_set('display_errors', 1);
@@ -18,4 +19,11 @@ date_default_timezone_set('America/Sao_Paulo');
 $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
 $dotenv->load();
 
-#####
+$builder = new ContainerBuilder();
+
+$definitions = require dirname(__DIR__) . '/src/Infra/Container/definitions.php';
+$definitions($builder);
+
+$container = $builder->build();
+
+return $container;
