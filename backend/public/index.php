@@ -2,6 +2,7 @@
 
 require_once dirname(__DIR__, 1) . '/config/bootstrap.php';
 
+use App\Http\Request;
 use FastRoute\RouteCollector;
 
 // Rotas
@@ -26,12 +27,14 @@ switch ($routeInfo[0]) {
         echo json_encode(['error' => 'Method Not Allowed']);
         break;
 
-    case FastRoute\Dispatcher::FOUND:
+     case FastRoute\Dispatcher::FOUND:
         [$class, $method] = $routeInfo[1];
         $vars = $routeInfo[2];
 
         $controller = $container->get($class);
 
-        echo call_user_func_array([$controller, $method], $vars);
+        $request = new Request();
+
+        echo call_user_func_array([$controller, $method], [$request, ...array_values($vars)]);
         break;
 }
