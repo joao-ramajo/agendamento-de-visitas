@@ -32,3 +32,29 @@ A API possui uma coleção do Postman para facilitar os testes dos endpoints dur
 
 **Acesse a coleção aqui:**  
 [Coleção Postman](https://web.postman.co/workspace/My-Workspace~97512eae-740b-4d13-80ea-58cb9b4e941e/collection/43215784-95c979e1-8b62-437f-80e4-52d59fb21496?action=share&source=copy-link&creator=43215784)
+
+---
+
+### Execução de Testes e Análise Estática
+
+Durante o desenvolvimento deste projeto, foram utilizados testes automatizados e análise estática de código para garantir a qualidade da aplicação.
+
+#### Testes (Pest)
+
+Os testes podem ser executados utilizando os scripts do Composer, que realizam a execução dentro do container Docker.
+
+**Executar testes:**
+```bash
+composer test
+```
+
+#### Análise Estática (phpstan)
+
+A análise estática garante a detecção antecipada de erros de tipagem e boas práticas no código.
+
+**Executar análise estática:**
+```bash
+composer stan
+```
+
+> Ambos os comandos acima são executados dentro do container Docker por meio dos scripts definidos no composer.json, garantindo um ambiente consistente entre máquinas diferentes.
