@@ -10,7 +10,17 @@ class Request
     public function __construct()
     {
         $this->query = $_GET;
-        $this->body = json_decode(file_get_contents('php://input'), true) ?? [];
+
+        $rawInput = file_get_contents('php://input');
+        $jsonBody = json_decode($rawInput, true);
+
+        // Se vier JSON, usa JSON
+        if (json_last_error() === JSON_ERROR_NONE && !empty($jsonBody)) {
+            $this->body = $jsonBody;
+        } else {
+            // Caso contrário, usa $_POST (form-data ou x-www-form-urlencoded)
+            $this->body = $_POST;
+        }
     }
 
     public function input(string $key, $default = null)
