@@ -7,6 +7,7 @@ use App\Http\Response;
 use Domain\Contracts\Repositories\SlotRepositoryInterface;
 use Domain\Contracts\Repositories\VehicleRepositoryInterface;
 use Domain\Entities\Vehicle;
+use Domain\ValueObjects\Id;
 use Domain\ValueObjects\Location;
 use Domain\ValueObjects\Price;
 
@@ -15,8 +16,7 @@ class VehicleController
     public function __construct(
         protected readonly VehicleRepositoryInterface $vehicleRepository,
         protected readonly SlotRepositoryInterface $slotRepository,
-    )
-    {}
+    ) {}
 
     public function index()
     {
@@ -30,12 +30,11 @@ class VehicleController
 
     public function dates(Request $request, int $vehicle_id)
     {
-        $dates = $this->slotRepository->findDatesByVehicleId(1);
+        $dates = $this->slotRepository->findDatesByVehicleId($vehicle_id);
 
-        $payload = [
+        return Response::json([
             'message' => 'Datas disponiveis',
             'data' => $dates,
-        ];
-        return Response::json($payload);
+        ]);
     }
 }
