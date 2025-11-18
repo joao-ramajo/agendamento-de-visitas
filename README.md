@@ -13,6 +13,7 @@ Repositório destinado a realização do teste técnico para a vaga de Engenheir
 - **FastRoute** — Lib de Roteamento
 - **Pest** — Testes automatizados
 - **php-dotenv** — Gerenciamento de variáveis de ambiente
+- **PDO** — Camada nativa de acesso ao banco de dados utilizada para comunicação com o MySQL
 
 #### Infraestrutura
 - **MySQL 8** — Banco de dados relacional
