@@ -1,5 +1,9 @@
 <?php declare(strict_types=1);
 
+namespace Domain\ValueObjects;
+
+use InvalidArgumentException;
+
 class Price
 {
     public function __construct(
@@ -10,8 +14,8 @@ class Price
         }
     }
 
-    public function __toString(): string
+    public function value(): int
     {
-        return (string) $this->value;
+        return $this->value;
     }
 }
