@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Dtos\StoreAppointmentDto;
 use DI\NotFoundException;
 use Domain\Contracts\Repositories\SlotRepositoryInterface;
 use Domain\Contracts\Repositories\VehicleRepositoryInterface;

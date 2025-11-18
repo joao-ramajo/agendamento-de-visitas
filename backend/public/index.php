@@ -15,6 +15,11 @@ $uri = strtok($_SERVER['REQUEST_URI'], '?');
 
 $routeInfo = $dispatcher->dispatch($method, $uri);
 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 switch ($routeInfo[0]) {
 
     case FastRoute\Dispatcher::NOT_FOUND:
