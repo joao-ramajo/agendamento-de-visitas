@@ -3,7 +3,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",
-            "Domain\\": "src/Domain/"
+            "Domain\\": "src/Domain/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -13,7 +14,8 @@
         }
     ],
     "scripts": {
-        "stan": "vendor/bin/phpstan analyse -l 5 src"
+        "stan": "docker exec -it api vendor/bin/phpstan analyse -l 5 src",
+        "test": "docker exec -it api vendor/bin/pest"
     },
     "require": {
         "nikic/fast-route": "^1.3",
