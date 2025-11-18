@@ -4,6 +4,7 @@ use Infra\Mappers\VehicleMapper;
 use Domain\Entities\Vehicle;
 use Domain\ValueObjects\Price;
 use Domain\ValueObjects\Location;
+use Infra\Repositories\MySQL\MySQLVehicleRepository;
 
 it('mapeia um array em uma entidade Vehicle', function () {
     $row = [

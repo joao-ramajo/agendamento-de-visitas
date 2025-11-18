@@ -9,3 +9,4 @@ $router->addRoute('GET', '/api/v1/health', [HealthController::class, 'check']);
 
 // Vehicles
 $router->addRoute('GET', '/api/v1/vehicles', [VehicleController::class, 'index']);
+$router->addRoute('GET', '/api/v1/{vehicle_id}/slots/dates', [VehicleController::class, 'dates']);

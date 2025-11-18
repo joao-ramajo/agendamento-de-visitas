@@ -16,7 +16,7 @@ class VehicleController
     )
     {}
 
-    public function index(Request $request)
+    public function index()
     {
         $vehicles = $this->vehicleRepository->index();
 
@@ -24,5 +24,19 @@ class VehicleController
             'message' => 'Listagem realizada com sucesso',
             'vehicles' => $vehicles,
         ]);
+    }
+
+    public function dates(Request $request, int $vehicle_id)
+    {
+
+        $payload = [
+            'message' => 'Datas disponiveis',
+            'data' => [
+                '2025-04-01',
+                '2025-04-02',
+                '2025-04-03',
+            ]
+        ];
+        return Response::json($payload);
     }
 }
