@@ -18,6 +18,7 @@ Repositório destinado a realização do teste técnico para a vaga de Engenheir
 #### Infraestrutura
 - **MySQL 8** — Banco de dados relacional
 - **Docker Compose** — Orquestração dos containers
+- **phpMyAdmin** — Interface web para visualização e gerenciamento do banco de dados
 
 #### Frontend
 - **React + Vite** — Base da interface
