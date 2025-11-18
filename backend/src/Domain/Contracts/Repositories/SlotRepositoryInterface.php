@@ -11,8 +11,8 @@ interface SlotRepositoryInterface
      */
     public function findDatesByVehicleId(int $vehicleId): array;
 
-    /**
-     * @return Slot[]
-     */
-    public function findHoursByVehicleAndDate(int $vehicleId, string $date): array;
+    // /**
+    //  * @return Slot[]
+    //  */
+    // public function findHoursByVehicleAndDate(int $vehicleId, string $date): array;
 }

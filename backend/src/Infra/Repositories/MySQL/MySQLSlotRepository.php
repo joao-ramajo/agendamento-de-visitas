@@ -2,9 +2,10 @@
 
 namespace Infra\Repositories\MySQL;
 
+use Domain\Contracts\Repositories\SlotRepositoryInterface;
 use Infra\Database\PdoConnection;
 
-class MySQLSlotRepository
+class MySQLSlotRepository implements SlotRepositoryInterface
 {
     public function __construct(
         protected PdoConnection $pdo,
@@ -13,7 +14,7 @@ class MySQLSlotRepository
     /**
      * @return string[] Lista de datas (YYYY-MM-DD)
      */
-    public function findDatesByVehicleId(int $vehicleId)
+    public function findDatesByVehicleId(int $vehicleId): array
     {
         $sql = '
             SELECT DISTINCT date
