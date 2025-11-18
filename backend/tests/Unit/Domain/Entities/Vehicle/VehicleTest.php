@@ -1,10 +1,14 @@
 <?php
 
 use Domain\Entities\Vehicle;
+use Domain\ValueObjects\Location;
 use Domain\ValueObjects\Price;
 
 describe('Vehicle entity', function () {
     it('cria uma entidade Vehicle com sucesso', function () {
+
+        $location = new Location('Mogi das Cruzes', 'SP');
+
         $vehicle = new Vehicle(
             id: 1,
             imageUrl: 'http://test.png',
@@ -12,7 +16,7 @@ describe('Vehicle entity', function () {
             model: 'Gol',
             version: '1.0',
             price: new Price(123000),
-            location: 'Mogi das Cruzes'
+            location: $location
         );
 
         expect($vehicle)->toBeInstanceOf(Vehicle::class);
@@ -23,7 +27,8 @@ describe('Vehicle entity', function () {
         expect($vehicle->version)->toBe('1.0');
         expect($vehicle->price)->toBeInstanceOf(Price::class);
         expect($vehicle->price->value())->toBe(123000);
-        expect($vehicle->location)->toBe('Mogi das Cruzes');
+        expect($vehicle->location)->toBeInstanceOf(Location::class);
+        expect($vehicle->location->format())->toBe('Mogi das Cruzes - SP');
     });
 
     it('não aceita valor inválido no Price dentro do Vehicle', function () {
@@ -34,7 +39,7 @@ describe('Vehicle entity', function () {
             model: 'Gol',
             version: '1.0',
             price: new Price(-1),  // aqui já lança
-            location: 'Mogi das Cruzes'
+            location: new Location('Mogi das Cruzes', 'SP')
         );
     })->throws(InvalidArgumentException::class);
 });

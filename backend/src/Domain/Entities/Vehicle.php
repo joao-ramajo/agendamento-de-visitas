@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Entities;
 
+use Domain\ValueObjects\Location;
 use Domain\ValueObjects\Price;
 
 class Vehicle
@@ -15,7 +16,7 @@ class Vehicle
         public readonly string $model,
         public readonly string $version,
         public readonly Price $price,
-        public readonly string $location,
+        public readonly Location $location,
     )
     {}
 }
