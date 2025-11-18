@@ -20,9 +20,11 @@ class MySQLVehicleRepository implements VehicleRepositoryInterface
         $stmt = $this->pdo->getConnection()->query('SELECT * FROM vehicles');
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-        return array_map(
+        $list = array_map(
             fn($row) => VehicleMapper::fromArray($row),
             $rows
         );
+
+        return $list;
     }
 }
