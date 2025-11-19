@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-import LoopLogo from "../../assets/loop-logo.svg?react";
+import LoopLogo from "../../assets/loop-logo.svg";
+
 import { Container } from "@mui/material";
 
 export default function Navbar() {
@@ -28,7 +29,7 @@ export default function Navbar() {
                     }}
                 >
                     <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <LoopLogo style={{ width: 75 }} />
+                        <img src={LoopLogo} alt="Loop Logo" style={{ height: 40 }} />
                     </Box>
 
                     <Box sx={{ display: "flex", gap: 4 }}>
