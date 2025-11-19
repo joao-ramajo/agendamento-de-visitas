@@ -10,7 +10,7 @@ $router->addRoute('GET', '/api/v1/health', [HealthController::class, 'check']);
 
 // Vehicles
 $router->addRoute('GET', '/api/v1/vehicles', [VehicleController::class, 'index']);
-$router->addRoute('GET', '/api/v1/vehicles/{vehicle_id}/slots/dates', [VehicleController::class, 'dates']);
+$router->addRoute('GET', '/api/v1/vehicles/{vehicle_id}/slots', [VehicleController::class, 'dates']);
 
 // Appointments
 $router->addRoute('POST', '/api/v1/appointments', [AppointmentsController::class, 'store']);
