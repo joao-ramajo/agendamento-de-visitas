@@ -17,7 +17,10 @@ class AppointmentService
         protected readonly AppointmentRepositoryInterface $appointmentRepository,
     ) {}
 
-    public function store(StoreAppointmentDto $data)
+    /**
+     * @return Appointment
+     */
+    public function store(StoreAppointmentDto $data): Appointment
     {
         $slot = $this->slotRepository->findById($data->slot_id);
 

@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Dtos\StoreAppointmentDto;
-use DI\NotFoundException;
 use Domain\Contracts\Repositories\SlotRepositoryInterface;
 use Domain\Contracts\Repositories\VehicleRepositoryInterface;
 use Domain\Exceptions\ModelNotFoundException;
@@ -19,7 +17,7 @@ class SlotService
     ) {}
 
     /**
-     * @return array Lista de datas disponíveis
+     * @return array
      */
     public function getAvailableDates(int $vehicleId): array
     {
@@ -27,15 +25,15 @@ class SlotService
             throw new ModelNotFoundException('Veículo não encontrado.');
         }
 
-        $dates = $this->slotRepository->findAvailableDatesByVehicleId($vehicleId);
+        $slots = $this->slotRepository->findAvailableDatesByVehicleId($vehicleId);
 
-        if (empty($dates)) {
+        if (empty($slots)) {
             throw new NoAvailableDatesException('Sem datas disponíveis.');
         }
 
         $slotsArray = array_map(
             fn($slot) => SlotMapper::toArray($slot),
-            $dates
+            $slots
         );
 
         return $slotsArray;
