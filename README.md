@@ -12,6 +12,7 @@ Repositório destinado a realização do teste técnico para a vaga de Engenheir
 - **PHP-DI** — Container de injeção de dependências
 - **FastRoute** — Lib de Roteamento
 - **Pest** — Testes automatizados
+- **Mockery** — Biblioteca utilizada nos testes unitários para criação de mocks
 - **php-dotenv** — Gerenciamento de variáveis de ambiente
 - **PDO** — Camada nativa de acesso ao banco de dados utilizada para comunicação com o MySQL
 
