@@ -8,30 +8,30 @@ import {
 } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
 import { Link } from "react-router-dom";
-
+import type { Vehicle } from "../../types/Vehicle";
 interface VehicleCardProps {
-    id: number;
-    image_url: string;
-    brand: string;
-    model: string;
-    version: string;
-    price: number;
-    location: string;
+    vehicle: Vehicle;
 }
 
-export function VehicleCard({
-    id,
-    image_url,
-    brand,
-    model,
-    version,
-    price,
-    location,
-}: VehicleCardProps) {
+
+
+export function VehicleCard({ vehicle }: VehicleCardProps) {
+    const { id, image_url, brand, model, version, price, location } = vehicle;
     return (
         <Card
             component={Link}
             to={`/vehicle/${id}`}
+            state={{
+                vehicle: {
+                    id,
+                    image_url,
+                    brand,
+                    model,
+                    version,
+                    price,
+                    location,
+                },
+            }}
             sx={{
                 textDecoration: "none",
                 borderRadius: 2,
@@ -50,7 +50,7 @@ export function VehicleCard({
         >
             <Box
                 sx={{
-                    width: 250,
+                    width: 270,
                     height: 180,            // <-- ALTURA FIXA PADRÃO
                     overflow: "hidden",
                 }}
