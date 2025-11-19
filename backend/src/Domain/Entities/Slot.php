@@ -1,12 +1,10 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Domain\Entities;
 
-use DateTimeImmutable;
 use Domain\ValueObjects\SlotHour;
 use Domain\ValueObjects\SlotId;
+use DateTimeImmutable;
 
 class Slot
 {
@@ -16,8 +14,7 @@ class Slot
         public readonly DateTimeImmutable $date,
         public readonly SlotHour $hour,
         public readonly bool $available,
-    )
-    {}
+    ) {}
 
     public function isAvailable(): bool
     {

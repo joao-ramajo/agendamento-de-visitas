@@ -1,14 +1,12 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Domain\Entities;
 
-use DateTimeImmutable;
 use Domain\ValueObjects\Email;
 use Domain\ValueObjects\Name;
 use Domain\ValueObjects\Phone;
 use Domain\ValueObjects\SlotId;
+use DateTimeImmutable;
 
 class Appointment
 {
@@ -19,6 +17,5 @@ class Appointment
         public readonly Email $email,
         public readonly Phone $phone,
         public readonly DateTimeImmutable $created_at,
-    )   
-    {}
+    ) {}
 }
