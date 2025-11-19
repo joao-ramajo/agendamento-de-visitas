@@ -24,6 +24,10 @@ Repositório destinado a realização do teste técnico para a vaga de Engenheir
 #### Frontend
 - **React + Vite** — Base da interface
 - **TypeScript** — Tipagem estática
+- **Material UI (MUI)** — Componentes visuais e sistema de design
+- **Emotion** — Engine de estilização utilizada pelo MUI
+- **React Router DOM** — Roteamento da aplicação
+- **SVGR (vite-plugin-svgr)** — Suporte para importar SVG como componentes React
 
 > A listagem reflete os pacotes instalados no momento do desenvolvimento deste README, podendo ser adicionado ou removido conforme o desenvolvimento.
 
