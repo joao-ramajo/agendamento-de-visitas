@@ -2,12 +2,12 @@
 
 namespace Infra\Mappers;
 
-use DateTimeImmutable;
+use Domain\Entities\Appointment;
 use Domain\ValueObjects\Email;
 use Domain\ValueObjects\Name;
 use Domain\ValueObjects\Phone;
-use Domain\Entities\Appointment;
 use Domain\ValueObjects\SlotId;
+use DateTimeImmutable;
 
 class AppointmentMapper
 {

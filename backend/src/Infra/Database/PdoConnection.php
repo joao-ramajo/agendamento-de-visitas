@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Infra\Database;
 
@@ -21,9 +19,9 @@ class PdoConnection
         $dsn = "mysql:host={$host};dbname={$database};charset={$charset}";
 
         $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_PERSISTENT         => false,
+            PDO::ATTR_PERSISTENT => false,
         ];
 
         try {

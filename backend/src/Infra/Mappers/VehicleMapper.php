@@ -1,12 +1,10 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Infra\Mappers;
 
 use Domain\Entities\Vehicle;
-use Domain\ValueObjects\Price;
 use Domain\ValueObjects\Location;
+use Domain\ValueObjects\Price;
 
 class VehicleMapper
 {

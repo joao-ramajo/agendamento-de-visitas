@@ -25,7 +25,7 @@ class SlotMapper
             'id' => $slot->id->value(),
             'vehicle_id' => $slot->vehicle_id,
             'date' => $slot->date->format('Y-m-d'),
-            'hour' => (string) $slot->hour,  // SlotHour VO → string
+            'hour' => (string) $slot->hour,
             'available' => $slot->available,
         ];
     }
