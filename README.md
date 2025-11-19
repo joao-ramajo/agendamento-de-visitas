@@ -97,3 +97,10 @@ O frontend ficará disponível em:
 ```bash
 http://localhost:5174
 ```
+
+Após isso para criar as tabelas e executar os seeders, entre na pasta backend/ e execute:
+
+```bash
+composer migrate
+```
+
