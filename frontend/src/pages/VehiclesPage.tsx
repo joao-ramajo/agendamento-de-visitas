@@ -1,9 +1,9 @@
-const VehiclesPage = () => {
-    return (
-        <>
-            <h1>teste</h1>
-        </>
-    )
-}
+import Layout from "../components/layout/Layout";
 
-export default VehiclesPage;
+export default function VehiclesPage() {
+  return (
+    <Layout>
+      <h1>Listagem de Veículos</h1>
+    </Layout>
+  );
+}
