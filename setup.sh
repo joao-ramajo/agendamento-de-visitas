@@ -12,9 +12,6 @@ else
   echo "backend/.env já existe, pulando..."
 fi
 
-# ===========================
-# COPIAR ENV DO FRONTEND
-# ===========================
 if [ -f frontend/.env.example ] && [ ! -f frontend/.env ]; then
   echo "Criando frontend/.env..."
   cp frontend/.env.example frontend/.env
@@ -22,29 +19,19 @@ else
   echo "frontend/.env já existe ou não possui .env.example"
 fi
 
-# ===========================
-# SUBIR CONTAINERS
-# ===========================
 echo "Subindo containers..."
 docker compose up -d
 
 echo "Aguardando containers iniciarem..."
 sleep 5
 
-docker compose up -d --build
+docker exec -it api composer install
 
-# ===========================
-# MIGRATIONS
-# ===========================
 echo "Executando migrations..."
 cd backend
 composer migrate
 
 echo "Backend pronto!"
-
-# ===========================
-# FRONTEND INSTALL
-# ===========================
 
 echo "Frontend pronto!"
 
