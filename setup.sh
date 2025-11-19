@@ -31,6 +31,8 @@ docker compose up -d
 echo "Aguardando containers iniciarem..."
 sleep 5
 
+docker compose up -d --build
+
 # ===========================
 # MIGRATIONS
 # ===========================
