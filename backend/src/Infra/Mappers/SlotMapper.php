@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Infra\Mappers;
 
@@ -19,5 +17,16 @@ class SlotMapper
             hour: new SlotHour($data['hour']),
             available: (bool) $data['available'],
         );
+    }
+
+    public static function toArray(Slot $slot): array
+    {
+        return [
+            'id' => $slot->id->value(),
+            'vehicle_id' => $slot->vehicle_id,
+            'date' => $slot->date->format('Y-m-d'),
+            'hour' => (string) $slot->hour,  // SlotHour VO → string
+            'available' => $slot->available,
+        ];
     }
 }
