@@ -3,7 +3,10 @@
 namespace Infra\Repositories\MySQL;
 
 use Domain\Contracts\Repositories\SlotRepositoryInterface;
+use Domain\Entities\Slot;
+use Domain\ValueObjects\SlotId;
 use Infra\Database\PdoConnection;
+use Infra\Mappers\SlotMapper;
 
 class MySQLSlotRepository implements SlotRepositoryInterface
 {
@@ -14,7 +17,7 @@ class MySQLSlotRepository implements SlotRepositoryInterface
     /**
      * @return string[] Lista de datas (YYYY-MM-DD)
      */
-    public function findDatesByVehicleId(int $vehicleId): array
+    public function findAvailableDatesByVehicleId(int $vehicleId): array
     {
         $sql = '
             SELECT DISTINCT date
@@ -29,5 +32,42 @@ class MySQLSlotRepository implements SlotRepositoryInterface
         $stmt->execute();
 
         return array_column($stmt->fetchAll(\PDO::FETCH_ASSOC), 'date');
+    }
+
+    public function findById(SlotId $id): ?Slot
+    {
+        $sql = ' 
+        SELECT *
+        FROM slots
+        WHERE id = :id
+        LIMIT 1
+    ';
+
+        $stmt = $this->pdo->getConnection()->prepare($sql);
+        $stmt->bindValue(':id', $id->value(), \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$result) {
+            return null;
+        }
+
+        return SlotMapper::fromArray($result);
+    }
+
+    public function markAsUnavailable(SlotId $id): void
+    {
+        $sql = '
+        UPDATE slots
+        SET available = 0
+        WHERE id = :id
+        LIMIT 1
+    ';
+
+        $stmt = $this->pdo->getConnection()->prepare($sql);
+
+        $stmt->bindValue(':id', $id->value(), \PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

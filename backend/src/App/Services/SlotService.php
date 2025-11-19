@@ -26,7 +26,7 @@ class SlotService
             throw new ModelNotFoundException('Veículo não encontrado.');
         }
 
-        $dates = $this->slotRepository->findDatesByVehicleId($vehicleId);
+        $dates = $this->slotRepository->findAvailableDatesByVehicleId($vehicleId);
 
         if (empty($dates)) {
             throw new NoAvailableDatesException('Sem datas disponíveis.');

@@ -5,15 +5,22 @@ declare(strict_types=1);
 namespace Domain\Entities;
 
 use DateTimeImmutable;
+use Domain\ValueObjects\SlotHour;
+use Domain\ValueObjects\SlotId;
 
 class Slot
 {
     public function __construct(
-        public readonly int $id,
+        public readonly SlotId $id,
         public readonly int $vehicle_id,
         public readonly DateTimeImmutable $date,
-        public readonly DateTimeImmutable $hour,
+        public readonly SlotHour $hour,
         public readonly bool $available,
     )
     {}
+
+    public function isAvailable(): bool
+    {
+        return $this->available;
+    }
 }

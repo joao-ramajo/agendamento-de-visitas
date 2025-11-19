@@ -6,6 +6,6 @@ namespace Domain\Exceptions;
 
 use DomainException;
 
-class NoAvailableDatesException extends DomainException
+class SlotNotAvailableException extends DomainException
 {
 }
