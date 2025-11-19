@@ -2,14 +2,13 @@
 
 namespace Domain\Contracts\Repositories;
 
-use DateTimeImmutable;
 use Domain\Entities\Slot;
 use Domain\ValueObjects\SlotId;
 
 interface SlotRepositoryInterface
 {
     /**
-     * @return string[]
+     * @return Slot[]
      */
     public function findAvailableDatesByVehicleId(int $vehicleId): array;
 

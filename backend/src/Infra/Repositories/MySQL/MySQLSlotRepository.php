@@ -15,12 +15,12 @@ class MySQLSlotRepository implements SlotRepositoryInterface
     ) {}
 
     /**
-     * @return string[] Lista de datas (YYYY-MM-DD)
+     * @return Slot[] Lista de datas (YYYY-MM-DD)
      */
     public function findAvailableDatesByVehicleId(int $vehicleId): array
     {
         $sql = '
-            SELECT DISTINCT date
+            SELECT *
             FROM slots
             WHERE vehicle_id = :vehicle_id
               AND available = 1
@@ -31,7 +31,12 @@ class MySQLSlotRepository implements SlotRepositoryInterface
         $stmt->bindValue(':vehicle_id', $vehicleId, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return array_column($stmt->fetchAll(\PDO::FETCH_ASSOC), 'date');
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return array_map(
+            fn(array $row) => SlotMapper::fromArray($row),
+            $rows
+        );
     }
 
     public function findById(SlotId $id): ?Slot
