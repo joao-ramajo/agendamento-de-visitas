@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Typography, Button, Modal, Paper } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import type { Slot } from "../../types/Slot";
 import { useSlots } from "../../hooks/useSlots";
 import NoDatesAvailable from "./NoDatesAvailable";
