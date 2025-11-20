@@ -2,6 +2,23 @@
 
 Sistema de agendamento de visitas para veículos, desenvolvido como teste técnico para a vaga de Engenheiro(a) Full-Stack. A aplicação utiliza backend em PHP com arquitetura limpa, frontend em React + MUI e infraestrutura containerizada com Docker.
 
+## Índice
+
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Deploy](#deploy)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+  - [Infraestrutura](#infraestrutura)
+- [Postman Collection](#postman-collection)
+  - [Como testar usando o Postman](#como-testar-usando-o-postman)
+- [Testes e Análise Estática](#testes-e-análise-estática)
+- [Como Executar o Projeto](#como-executar-o-projeto)
+- [Decisões Arquiteturais](#decisões-arquiteturais)
+- [Diagrama de Arquitetura e Fluxo](#diagrama-de-arquitetura-e-fluxo)
+- [CORS – Política de Origem Liberada](#cors--política-de-origem-liberada)
+- [Especificação OpenAPI](#especificação-openapi)
+
 ## Sobre o Projeto
 
 O sistema permite que usuários:
