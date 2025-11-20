@@ -14,11 +14,15 @@ export default function NoDatesAvailable() {
         overflow: "hidden",
         width: "100%",
         maxWidth: 600,
-        height: 400,
         mx: "auto",
 
         display: "flex",
         flexDirection: "column",
+
+        height: {
+          xs: "auto",   // telas pequenas → altura ajusta ao conteúdo
+          sm: 400,      // telas médias e grandes → 400px fixo
+        }
       }}
     >
       {/* HEADER */}
@@ -72,7 +76,6 @@ export default function NoDatesAvailable() {
             background: "#ff123c",
             color: "#fff",
             fontWeight: 600,
-            textTransform: "none",
             py: 1.5,
             width: "100%",
           }}

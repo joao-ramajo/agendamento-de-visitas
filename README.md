@@ -18,7 +18,6 @@ O sistema permite que usuários:
 
 ---
 
-
 ## Tecnologias Utilizadas
 
 ### Backend
@@ -178,12 +177,10 @@ Após subir o ambiente, você pode visualizar a documentação Swagger acessando
 http://localhost:8080/docs/index.html
 ```
 
-
 Ou, em produção (Railway):
 
 ```bash
 https://loop-teste-tecnico-production.up.railway.app/docs/index.html
 ```
-
 
 A página carrega automaticamente o arquivo openapi.yaml e renderiza a interface Swagger UI, permitindo explorar todas as rotas, modelos e respostas da API.
