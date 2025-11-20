@@ -4,6 +4,9 @@ import { useSlots } from "../../hooks/useSlots";
 import type { Slot } from "../../types/Slot";
 import NoDatesAvailable from "./NoDatesAvailable";
 import ScheduleSkeleton from "../skeletons/ScheduleSkeleton";
+import { useNavigate } from "react-router-dom";
+import { useApiOffline } from "../../hooks/useApiOffline";
+import { useEffect } from "react";
 
 interface SchedulePanelProps {
   vehicleId: number;
@@ -18,7 +21,7 @@ type SlotsByDate = Record<string, Slot[]>;
 type SlotsByMonth = Record<string, SlotsByDate>;
 
 export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProps) {
-  const { data, isLoading } = useSlots(vehicleId);
+  const { data, isLoading, error } = useSlots(vehicleId);
 
   const slots: Slot[] = (data ?? []) as Slot[];
 
@@ -30,10 +33,20 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
   const datesRef = useRef<HTMLDivElement | null>(null);
   const hoursRef = useRef<HTMLDivElement | null>(null);
 
-  if (isLoading) return <ScheduleSkeleton/>;
+  const navigate = useNavigate();
+
+  const isBackendOffline = useApiOffline(error);
+
+  useEffect(() => {
+    if (isBackendOffline) {
+      navigate("/ops");
+    }
+  }, [isBackendOffline, navigate]);
+
+  if (isLoading) return <ScheduleSkeleton />;
 
   if (!slots?.length) {
-    return <NoDatesAvailable/>;
+    return <NoDatesAvailable />;
   }
 
   // Agrupar slots por mês

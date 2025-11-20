@@ -2,18 +2,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../api/axios";
 import type { Vehicle } from "../types/Vehicle";
+import type { AxiosError } from "axios";
 
 export function useVehicles() {
-  return useQuery<Vehicle[]>({
+  return useQuery<Vehicle[], AxiosError>({
     queryKey: ["vehicles"],
 
     queryFn: async () => {
-      try {
-        const response = await api.get("/vehicles");
-        return response.data.data;
-      } catch (error) {
-        throw error;
-      }
+      const response = await api.get("/vehicles");
+      return response.data.data;
     },
 
     retry: false,

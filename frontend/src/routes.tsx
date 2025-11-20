@@ -3,6 +3,7 @@ import VehiclesPage from "./pages/VehiclesPage";
 import VehicleSchedulePage from "./pages/VehicleSchedulePage";
 import SuccessPage from "./pages/SuccessPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ApiOfflinePage from "./pages/ApiOfflinePage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
   {
     path: "/agendamento-realizado",
     element: <SuccessPage />
+  },
+  {
+    path: "/ops",
+    element: <ApiOfflinePage/>
   },
   {
     path: "*",
