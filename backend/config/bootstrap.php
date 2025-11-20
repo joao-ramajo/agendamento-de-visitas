@@ -8,6 +8,7 @@ use Dotenv\Dotenv;
 
 $allowedOrigins = [
     $_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL'),
+    $_ENV['APP_URL'] ?? getenv('APP_URL'),
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? null;
