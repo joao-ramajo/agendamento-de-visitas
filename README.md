@@ -37,7 +37,7 @@ O sistema permite que usuários:
 - **Material UI (MUI)** — Sistema de componentes e design
 - **Emotion** — Engine de estilização do MUI
 - **React Router DOM** — Roteamento da aplicação
-- **React Query** — Gerenciamento de estado e cache
+- **Tanstack Query** — Gerenciamento de estado e cache
 
 ### Infraestrutura
 - **MySQL 8** — Banco de dados relacional
@@ -103,14 +103,13 @@ Este comando irá:
 - ✅ Instalar dependências do backend
 - ✅ Executar migrações do banco de dados
 - ✅ Popular o banco com dados iniciais (seeders)
-- ✅ Deixar o ambiente completamente pronto para uso
 
 ---
 
 ## Decisões Arquiteturais
 
 ### Separação de Responsabilidades
-Utilização clara de Domain, Infrastructure, Application e camada de Interface (API).
+Utilização Domain, Infrastructure, Application e camada de Interface (API).
 
 ### Value Objects
 Garantia de consistência e validação automática através de:
@@ -126,7 +125,7 @@ Evita acoplamento e garante validação de inputs antes de chegar no domínio.
 Abstração do acesso ao banco de dados, permitindo troca de implementação futura.
 
 ### Inversão de Dependência (PHP-DI)
-Domínio completamente desacoplado dos detalhes de infraestrutura.
+Domínio desacoplado dos detalhes de infraestrutura.
 
 ### Frontend Desacoplado
 - Hooks dedicados para operações da API

@@ -43,12 +43,23 @@ export default function SuccessPage() {
 
             <Card
                 sx={{
-                    width: "90%",
-                    maxWidth: 1000,
-                    p: 6,
+                    width: "100%",
+                    maxWidth: 700,
+                    margin: "auto",
+                    p: {
+                        xs: 2,
+                        sm: 3,
+                        md: 6,
+                    },
                     textAlign: "center",
                     borderRadius: 3,
                     boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+
+                    minWidth: {
+                        xs: "100%",
+                        sm: "400px",
+                        md: "500px",
+                    },
                 }}
             >
                 {/* Ícone */}

@@ -63,7 +63,15 @@ export default function VehicleSchedulePage() {
                     </Box>
 
                     {/* Painel */}
-                    <Box sx={{ flex: 1, minWidth: "500px" }}>
+                    <Box sx={{
+                        flex: 1,
+                        minWidth: {
+                            xs: "100%",  
+                            sm: "400px", 
+                            md: "500px", 
+                        },
+                        width: "100%",
+                    }}>
 
                         {/* STEP 1 — escolher data/hora */}
                         {step === 1 && (

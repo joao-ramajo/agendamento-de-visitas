@@ -107,9 +107,13 @@ export default function UserInfoPanel({
                 borderRadius: 2,
                 border: "1px solid #eee",
                 overflow: "hidden",
-                height: "400px",
                 display: "flex",
                 flexDirection: "column",
+
+                height: {
+                    xs: "auto",
+                    sm: 400,
+                },
             }}
         >
             {/* HEADER */}
@@ -152,7 +156,16 @@ export default function UserInfoPanel({
                 />
 
                 {/* Email + Telefone */}
-                <Box sx={{ display: "flex", gap: 2 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: 2,
+                        flexDirection: {
+                            xs: "column", // telas pequenas: fica um embaixo do outro
+                            sm: "row",    // telas médias+: lado a lado
+                        },
+                    }}
+                >
                     <TextField
                         label="E-mail"
                         type="email"
@@ -176,6 +189,7 @@ export default function UserInfoPanel({
                         helperText={errors.phone}
                     />
                 </Box>
+
 
                 {error && (
                     <Typography
