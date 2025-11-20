@@ -49,7 +49,6 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
     return <NoDatesAvailable />;
   }
 
-  // Agrupar slots por mês
   const groupedByMonth = slots.reduce<SlotsByMonth>((acc, slot) => {
     const [year, month] = slot.date.split("-");
     const monthKey = `${year}-${month}`;
@@ -69,6 +68,7 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
   const sortedMonths = Object.keys(groupedByMonth).sort();
 
   const allHours: string[] = [];
+
   for (let h = 9; h <= 18; h++) {
     allHours.push(`${String(h).padStart(2, "0")}:00`);
     if (h < 18) allHours.push(`${String(h).padStart(2, "0")}:30`);
@@ -78,6 +78,8 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
     selectedDate && selectedMonth
       ? groupedByMonth[selectedMonth]?.[selectedDate] ?? []
       : [];
+
+  const availableHours = availableSlotsForDate.map(slot => slot.hour);
 
   const GREEN = "#4caf50";
   const RED = "#ff123c";
@@ -207,7 +209,7 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
               3. Selecione o horário
             </Typography>
             <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", justifyContent: "center" }}>
-              {allHours.map((hour) => {
+              {availableHours.map((hour) => {
                 const slot = availableSlotsForDate.find((s) => s.hour === hour);
                 const isAvailable = !!slot;
                 const isSelected = selectedHour === hour;
