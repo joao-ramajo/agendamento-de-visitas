@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import VehiclesPage from "./pages/VehiclesPage";
 import VehicleSchedulePage from "./pages/VehicleSchedulePage";
 import SuccessPage from "./pages/SuccessPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,12 @@ export const router = createBrowserRouter([
     element: <VehicleSchedulePage />,
   },
   {
-    path: "agendamento-realizado",
-    element: <SuccessPage/>
+    path: "/agendamento-realizado",
+    element: <SuccessPage />
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />
   }
+
 ]);
