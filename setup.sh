@@ -3,8 +3,6 @@
 run_migrate() {
   echo "Executando migrations..."
 
-  cd backend
-
   if docker exec api composer migrate 2>/dev/null; then
     echo "Migrations executadas."
     return 0
