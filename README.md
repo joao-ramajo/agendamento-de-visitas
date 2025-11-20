@@ -56,6 +56,8 @@ O arquivo está no formato JSON e pode ser importado diretamente no Postman.
 
 **[🔗 Acessar Coleção Postman](./docs/postman-collection.json)**
 
+[📥 Download da Collection Postman](https://github.com/joao-ramajo/loop-teste-tecnico/raw/main/docs/postman-collection.json)
+
 ### Como testar usando o Postman
 
 - Abra o Postman
@@ -85,8 +87,6 @@ A análise estática detecta erros de tipagem e garante boas práticas.
 cd backend
 composer stan
 ```
-
-> 💡 Ambos os comandos são executados dentro do container Docker através de scripts definidos no `composer.json`, garantindo consistência entre ambientes.
 
 ---
 
@@ -150,7 +150,7 @@ Isso ajudou a estruturar:
 - responsabilidades de cada camada
 - regras de negócio relacionadas a datas e horários
 
-**Diagrama (Excalidraw):**  
+**Diagrama (Excalidraw):**
 ![architecture-diagram](./docs/diagrama.png)
 
 > Durante o desenvolvimento algumas escolhas foram repensadas, este diagrama representa o planejamento inicial do projeto.
