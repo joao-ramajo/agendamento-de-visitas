@@ -138,7 +138,7 @@ export default function UserInfoPanel({
                     variant="body1"
                     sx={{ mb: 1, fontWeight: 600, textAlign: "center" }}
                 >
-                    { message }
+                    {message}
                 </Typography>
 
                 {/* Nome */}
@@ -206,6 +206,7 @@ export default function UserInfoPanel({
                     fullWidth
                     disabled={!isValid}
                     sx={{
+                        py: 1.5,
                         background: RED,
                         color: "#fff",
                         fontWeight: 600,
