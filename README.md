@@ -52,7 +52,7 @@ O sistema permite que usuários:
 
 A API possui uma coleção do Postman para facilitar os testes durante o desenvolvimento.
 
-**[🔗 Acessar Coleção Postman](https://web.postman.co/workspace/My-Workspace~97512eae-740b-4d13-80ea-58cb9b4e941e/collection/43215784-95c979e1-8b62-437f-80e4-52d59fb21496?action=share&source=copy-link&creator=43215784)**
+**[🔗 Acessar Coleção Postman](./docs/postman-collection.json)**
 
 ---
 
