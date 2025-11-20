@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import type { Slot } from "../../types/Slot";
 import { useSlots } from "../../hooks/useSlots";
 import NoDatesAvailable from "./NoDatesAvailable";
+import ScheduleSkeleton from "../skeletons/ScheduleSkeleton";
 
 interface SchedulePanelProps {
     vehicleId: number;
@@ -21,7 +22,8 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
     const [selectedHour, setSelectedHour] = useState<string | null>(null);
     const [selectedSlotId, setSelectedSlotId] = useState<number | null>(null);
 
-    if (isLoading) return <Typography>Carregando datas...</Typography>;
+    // if (isLoading) return <Typography>Carregando datas...</Typography>;
+    if (isLoading) return <ScheduleSkeleton></ScheduleSkeleton>;
 
     if (!slots?.length) {
         return <NoDatesAvailable />;
