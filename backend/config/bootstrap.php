@@ -9,10 +9,22 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+$allowedOrigin = 'https://loop-teste-tecnico-production.up.railway.app';
+$origin = $_SERVER['HTTP_ORIGIN'] ?? null;
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+
+$isPostman = str_contains($userAgent, 'PostmanRuntime');
+
+if ($origin === $allowedOrigin || $isPostman) {
+    header("Access-Control-Allow-Origin: $allowedOrigin");  // nunca use *
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
+} else {
+    header('HTTP/1.1 403 Forbidden');
+    echo json_encode(['error' => 'Acesso não autorizado']);
+    exit;
+}
 
 date_default_timezone_set('America/Sao_Paulo');
 
