@@ -1,5 +1,5 @@
 {
-    "name": "noweb/base",
+    "name": "joao-ramajo/loop-teste-tecnico",
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",

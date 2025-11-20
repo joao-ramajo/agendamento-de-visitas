@@ -29,7 +29,11 @@ services:
 
     depends_on:
       - api
-
+    command: >
+      sh -c "
+        npm install
+        npm run dev -- --host
+      "
   db:
     image: mysql:8.0
     container_name: db
