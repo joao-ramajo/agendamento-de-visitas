@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useSlots } from "../../hooks/useSlots";
 import type { Slot } from "../../types/Slot";
+import NoDatesAvailable from "./NoDatesAvailable";
+import ScheduleSkeleton from "../skeletons/ScheduleSkeleton";
 
 interface SchedulePanelProps {
   vehicleId: number;
@@ -28,10 +30,10 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
   const datesRef = useRef<HTMLDivElement | null>(null);
   const hoursRef = useRef<HTMLDivElement | null>(null);
 
-  if (isLoading) return <div>Carregando...</div>;
+  if (isLoading) return <ScheduleSkeleton/>;
 
   if (!slots?.length) {
-    return <div>Nenhuma data disponível</div>;
+    return <NoDatesAvailable/>;
   }
 
   // Agrupar slots por mês
