@@ -54,7 +54,10 @@ class VehicleController
         } catch (ModelNotFoundException $e) {
             return Response::error($e->getMessage(), 404);
         } catch (NoAvailableDatesException $e) {
-            return Response::error($e->getMessage(), 422);
+            return Response::json([
+                'message' => $e->getMessage(),
+                'data' => [],
+            ], 200);
         } catch (Exception $e) {
             $this->log->error('Erro ao listar datas disponíveis', [
                 'message' => $e->getMessage(),

@@ -10,5 +10,6 @@ export function useSlots(vehicleId: number) {
       return response.data.data;
     },
     enabled: !!vehicleId,
+    retry: false,
   });
 }
