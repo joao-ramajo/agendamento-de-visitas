@@ -50,7 +50,8 @@ run_migrate
 
 echo ""
 echo "Ambiente iniciado com sucesso!"
-echo "API:      http://localhost:8080"
-echo "Frontend: http://localhost:5174"
-echo "OpenAPI:  http://localhost:8080/docs/index.html"
+echo "API:        http://localhost:8080"
+echo "Frontend:   http://localhost:5174"
+echo "OpenAPI:    http://localhost:8080/docs/index.html"
+echo "PHPMyAdmin: http://localhost:8081"
 echo ""
