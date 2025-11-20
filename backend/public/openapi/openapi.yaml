@@ -26,7 +26,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Vehicle"
 
-  /api/v1/vehicles/{vehicleId}/slots/dates:
+  /api/v1/vehicles/{vehicleId}/slots:
     get:
       summary: Lista de datas e horários disponíveis para visita
       tags: [Slots]
