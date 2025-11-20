@@ -171,16 +171,18 @@ Isso ajudou a estruturar:
 
 ## CORS – Política de Origem Liberada
 
-Por questões de segurança, o backend implementado neste projeto não aceita requisições de qualquer origem.
+Por questões de segurança, o backend utiliza CORS para restringir **requisições feitas por aplicações web rodando no navegador**.
 
-Atualmente, o CORS está configurado para permitir apenas duas origens:
+Atualmente, o CORS está configurado para permitir:
 
-- http://localhost
+- `http://localhost` (e variações, como `http://localhost:5173`)
+  Usado no ambiente de desenvolvimento com Vite.
+- O domínio do frontend hospedado na Vercel, definido na variável de ambiente `FRONTEND_URL`.
 
-Usado no ambiente de desenvolvimento com Vite.
+Além disso:
 
-E o domínio do frontend hospedado na Vercel
-Definido via variável de ambiente FRONTEND_URL.
+- Requisições feitas por ferramentas como Postman podem ser aceitas para fins de teste.
+- Acesso direto à API pelo navegador, não é bloqueado por CORS e continua funcionando normalmente.
 
 ## Especificação OpenAPI
 

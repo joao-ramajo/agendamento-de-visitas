@@ -5,7 +5,6 @@ require_once dirname(__DIR__, 1) . '/vendor/autoload.php';
 use DI\ContainerBuilder;
 use Dotenv\Dotenv;
 
-
 $allowedOrigins = [
     $_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL'),
     $_ENV['APP_URL'] ?? getenv('APP_URL'),
