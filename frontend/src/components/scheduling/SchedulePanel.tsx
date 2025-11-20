@@ -2,12 +2,6 @@ import { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import type { Slot } from "../../types/Slot";
 import { useSlots } from "../../hooks/useSlots";
-
-// interface SchedulePanelProps {
-//     vehicleId: number;
-//     onSelect: (slot: { slotId: number; }, date: string, hour: string) => void;
-// }
-
 interface SchedulePanelProps {
     vehicleId: number;
     onSelect: (data: {

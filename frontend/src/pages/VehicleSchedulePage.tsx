@@ -66,23 +66,6 @@ export default function VehicleSchedulePage() {
 
                         {/* STEP 1 — escolher data/hora */}
                         {step === 1 && (
-                            // <SchedulePanel
-                            //     vehicleId={Number(id)}
-                            //     onSelect={(slotId, date, hour) => {
-                            //         const numericSlotId = typeof slotId === 'object' && 'slotId' in slotId
-                            //             ? slotId.slotId
-                            //             : slotId;
-
-                            //         console.log(date);
-
-                            //         setSelected({
-                            //             slotId: Number(numericSlotId), // Garante que é number
-                            //             date,
-                            //             hour
-                            //         });
-                            //         setStep(2);
-                            //     }}
-                            // />
                             <SchedulePanel
                                 vehicleId={Number(id)}
                                 onSelect={({ slotId, date, hour }) => {
