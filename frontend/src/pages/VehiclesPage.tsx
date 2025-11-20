@@ -2,10 +2,13 @@ import Layout from "../components/layout/Layout";
 import { useVehicles } from "../hooks/useVehicles";
 import { Box } from "@mui/material";
 import { VehicleCard } from "../components/vehicle/VehicleCard";
-import type { Vehicle } from "../types/Vehicle";
+import VehicleCardSkeleton from "../components/skeletons/VehicleCardSkeleton";
 
 export default function VehiclesPage() {
-  const { data } = useVehicles();
+  const { data, isLoading } = useVehicles();
+
+  // Quantidade de skeletons desejada
+  const skeletons = Array.from({ length: 6 });
 
   return (
     <Layout>
@@ -17,9 +20,9 @@ export default function VehiclesPage() {
           justifyItems: "center",
         }}
       >
-        {data?.map((v: Vehicle) => (
-          <VehicleCard key={v.id} vehicle={v} />
-        ))}
+        {isLoading
+          ? skeletons.map((_, i) => <VehicleCardSkeleton key={i} />)
+          : data?.map((v) => <VehicleCard key={v.id} vehicle={v} />)}
       </Box>
     </Layout>
   );
