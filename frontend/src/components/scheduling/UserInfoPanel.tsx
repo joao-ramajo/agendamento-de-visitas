@@ -130,7 +130,7 @@ export default function UserInfoPanel({
                     py: 2,
                 }}
             >
-                <Typography variant="h6">Informações da Visita</Typography>
+                <Typography variant="subtitle1" sx={{ color: "#f5f5f5ff", fontWeight: 600 }}>Informações da Visita</Typography>
             </Box>
 
             {/* BODY */}
