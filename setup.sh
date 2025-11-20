@@ -46,7 +46,7 @@ docker compose up -d
 
 until docker exec db mysqladmin ping -h "localhost" --silent; do
   echo "MySQL ainda iniciando..."
-  sleep 5
+  sleep 15
 done
 
 docker exec api composer install
