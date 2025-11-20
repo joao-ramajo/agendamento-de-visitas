@@ -168,3 +168,25 @@ Usado no ambiente de desenvolvimento com Vite.
 
 E o domínio do frontend hospedado na Vercel
 Definido via variável de ambiente FRONTEND_URL.
+
+## Especificação OpenAPI
+
+A API deste projeto possui uma especificação OpenAPI 3.0 disponível para consulta e documentação das rotas.
+
+#### Visualização da Documentação
+
+Após subir o ambiente, você pode visualizar a documentação Swagger acessando:
+
+```bash
+http://localhost:8080/docs/index.html
+```
+
+
+Ou, em produção (Railway):
+
+```bash
+https://loop-teste-tecnico-production.up.railway.app/docs/index.html
+```
+
+
+A página carrega automaticamente o arquivo openapi.yaml e renderiza a interface Swagger UI, permitindo explorar todas as rotas, modelos e respostas da API.
