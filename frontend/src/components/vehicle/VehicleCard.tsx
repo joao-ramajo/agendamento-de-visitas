@@ -39,7 +39,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
                 border: "1px solid rgba(0,0,0,0.08)",
                 boxShadow: "0px 2px 6px rgba(0,0,0,0.06)",
                 transition: "0.2s ease",
-                height: 360,                          // ⭐ FIXA A ALTURA DO CARD
+                height: "100%",                          // ⭐ FIXA A ALTURA DO CARD
                 display: "flex",
                 flexDirection: "column",
                 "&:hover": {

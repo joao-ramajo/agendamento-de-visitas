@@ -3,11 +3,21 @@ import { Box, Typography, Button } from "@mui/material";
 import type { Slot } from "../../types/Slot";
 import { useSlots } from "../../hooks/useSlots";
 
+// interface SchedulePanelProps {
+//     vehicleId: number;
+//     onSelect: (slot: { slotId: number; }, date: string, hour: string) => void;
+// }
+
 interface SchedulePanelProps {
     vehicleId: number;
+    onSelect: (data: {
+        slotId: number;
+        date: string;
+        hour: string;
+    }) => void;
 }
 
-export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
+export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProps) {
     const { data: slots, isLoading, error } = useSlots(vehicleId);
 
     const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -18,14 +28,13 @@ export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
     if (error) return <Typography color="error">Erro ao carregar datas</Typography>;
     if (!slots?.length) return <Typography>Nenhuma data disponível</Typography>;
 
-    // Agrupa slots por data
     const groupedDates = slots.reduce((acc: any, slot: Slot) => {
         if (!acc[slot.date]) acc[slot.date] = [];
         acc[slot.date].push(slot);
         return acc;
     }, {});
 
-    // Horários entre 09:00 → 18:00
+    // horarios 9h → 18h
     const allHours = [];
     for (let h = 9; h <= 18; h++) {
         allHours.push(`${String(h).padStart(2, "0")}:00`);
@@ -35,73 +44,33 @@ export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
     const availableSlotsForDate: Slot[] =
         selectedDate ? groupedDates[selectedDate] ?? [] : [];
 
+    const GREEN = "#4caf50";
+    const RED = "#ff123c";
+
     const monthName = new Date(Object.keys(groupedDates)[0]).toLocaleDateString(
         "pt-BR",
         { month: "long", year: "numeric" }
     );
 
-    const GREEN = "#4caf50";
-    const RED = "#ff123c";
-
-    return (
-        <Box
-            sx={{
-                borderRadius: 2,
-                border: "1px solid #eee",
-                overflow: "hidden",
-                height: "360px",
-                display: "flex",
-                flexDirection: "column"
-            }}
-        >
+   return (
+        <Box sx={{ borderRadius: 2, border: "1px solid #eee", overflow: "hidden", height: "400px", display: "flex", flexDirection: "column" }}>
             {/* HEADER */}
-            <Box
-                sx={{
-                    background: "#2c2e3a",
-                    color: "#fff",
-                    textAlign: "center",
-                    py: 2
-                }}
-            >
-                <Typography variant="h6">
-                    Agende o dia e horário da sua visita
-                </Typography>
+            <Box sx={{ background: "#2c2e3a", color: "#fff", textAlign: "center", py: 2 }}>
+                <Typography variant="h6">Agende o dia e horário da sua visita</Typography>
             </Box>
 
-            {/* BODY COM SCROLL */}
-            <Box
-                sx={{
-                    p: 3,
-                    overflowY: "auto",
-                    flexGrow: 1
-                }}
-            >
-                {/* MÊS */}
-                <Typography
-                    variant="h6"
-                    sx={{
-                        textAlign: "center",
-                        mb: 3,
-                        textTransform: "capitalize"
-                    }}
-                >
+            {/* BODY */}
+            <Box sx={{ p: 3, overflowY: "auto", flexGrow: 1 }}>
+                {/* Mês */}
+                <Typography variant="h6" sx={{ textAlign: "center", mb: 3 }}>
                     {monthName}
                 </Typography>
 
-                {/* DATAS */}
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "space-evenly",
-                        gap: 1,
-                        mb: 3,
-                        flexWrap: "wrap"
-                    }}
-                >
+                {/* Datas */}
+                <Box sx={{ display: "flex", gap: 1, mb: 3, justifyContent: "center", flexWrap: "wrap" }}>
                     {Object.keys(groupedDates).map((date) => {
                         const d = new Date(date);
-                        const weekday = d
-                            .toLocaleDateString("pt-BR", { weekday: "short" })
+                        const weekday = d.toLocaleDateString("pt-BR", { weekday: "short" })
                             .replace(".", "")
                             .toUpperCase();
 
@@ -127,33 +96,20 @@ export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     cursor: "pointer",
-                                    transition: "0.2s"
                                 }}
                             >
-                                <span style={{ fontSize: 12, opacity: 0.9 }}>
-                                    {weekday}
-                                </span>
-                                <strong style={{ fontSize: 16 }}>
-                                    {d.getDate()}
-                                </strong>
+                                <span style={{ fontSize: 12 }}>{weekday}</span>
+                                <strong style={{ fontSize: 16 }}>{d.getDate()}</strong>
                             </Box>
                         );
                     })}
                 </Box>
 
-                {/* HORÁRIOS – LISTA COM SCROLL */}
-                <Box
-                    sx={{
-                        display: "flex",
-                        gap: 1,
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                        mb: 3
-                    }}
-                >
+                {/* HORÁRIOS */}
+                <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", justifyContent: "center", mb: 2 }}>
                     {allHours.map((hour) => {
                         const slot = availableSlotsForDate.find((s) => s.hour === hour);
-                        const isAvailable = selectedDate ? !!slot : true;
+                        const isAvailable = selectedDate ? !!slot : false;
                         const isSelected = selectedHour === hour;
 
                         return (
@@ -169,25 +125,10 @@ export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
                                     py: 1,
                                     borderRadius: "20px",
                                     border: "1px solid #ddd",
-                                    fontSize: 16,
+                                    background: !isAvailable ? "#333" : isSelected ? GREEN : "#fafafa",
+                                    color: !isAvailable ? "#999" : isSelected ? "#fff" : "#000",
                                     cursor: isAvailable ? "pointer" : "not-allowed",
-                                    background:
-                                        !selectedDate
-                                            ? "#fafafa"
-                                            : !isAvailable
-                                                ? "#333"
-                                                : isSelected
-                                                    ? GREEN
-                                                    : "#fafafa",
-                                    color:
-                                        !selectedDate
-                                            ? "inherit"
-                                            : !isAvailable
-                                                ? "#999"
-                                                : isSelected
-                                                    ? "#fff"
-                                                    : "#000",
-                                    opacity: !isAvailable ? 0.5 : 1
+                                    opacity: !isAvailable ? 0.4 : 1,
                                 }}
                             >
                                 {hour}
@@ -197,25 +138,29 @@ export default function SchedulePanel({ vehicleId }: SchedulePanelProps) {
                 </Box>
             </Box>
 
-            {/* FOOTER COM BOTÃO FIXO */}
+            {/* FOOTER */}
             <Box sx={{ p: 2, borderTop: "1px solid #eee" }}>
                 <Button
                     variant="contained"
+                    fullWidth
                     disabled={!selectedSlotId}
                     sx={{
                         py: 1.5,
                         background: RED,
                         color: "#fff",
                         fontWeight: 600,
-                        width: "100%",
-                        mx: "auto",
-                        "&:disabled": {
-                            background: "#cfcfcf",
-                            color: "#777"
-                        }
+                    }}
+                    onClick={() => {
+                        if (!selectedSlotId || !selectedDate || !selectedHour) return;
+                        
+                        onSelect({
+                            slotId: selectedSlotId,
+                            date: selectedDate,
+                            hour: selectedHour
+                        });
                     }}
                 >
-                    Agendar Visita
+                    Continuar
                 </Button>
             </Box>
         </Box>
