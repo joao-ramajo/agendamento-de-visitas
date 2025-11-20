@@ -18,6 +18,7 @@ Sistema de agendamento de visitas para veículos, desenvolvido como teste técni
 - [Diagrama de Arquitetura e Fluxo](#diagrama-de-arquitetura-e-fluxo)
 - [CORS – Política de Origem Liberada](#cors--política-de-origem-liberada)
 - [Especificação OpenAPI](#especificação-openapi)
+- [Vídeo de Execução do Projeto](#execução-do-projeto-via-script)
 
 ## Sobre o Projeto
 
@@ -203,3 +204,15 @@ https://loop-teste-tecnico-production.up.railway.app/docs/index.html
 ```
 
 A página carrega automaticamente o arquivo openapi.yaml e renderiza a interface Swagger UI, permitindo explorar todas as rotas, modelos e respostas da API.
+
+### Execução do projeto via Script
+
+O vídeo abaixo demonstra todo o processo de execução do projeto a partir de um repositório recém-clonado.
+Nele é possível ver o funcionamento completo do script de setup, que realiza automaticamente:
+
+- Instalação das dependências
+- Configuração inicial do ambiente
+- Criação das estruturas necessárias
+- Inicialização do servidor
+
+[Veja aqui](./docs/setup-video.mp4)
