@@ -72,8 +72,11 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
                     {/* Datas */}
                     <Box sx={{ display: "flex", gap: 1, mb: 3, justifyContent: "center", flexWrap: "wrap" }}>
                         {Object.keys(groupedDates).map((date) => {
-                            const d = new Date(date);
-                            const weekday = d.toLocaleDateString("pt-BR", { weekday: "short" })
+                            const [year, month, day] = date.split("-").map(Number);
+                            const d = new Date(year, month - 1, day); // <-- Correto, sem timezone bug
+
+                            const weekday = d
+                                .toLocaleDateString("pt-BR", { weekday: "short" })
                                 .replace(".", "")
                                 .toUpperCase();
 
@@ -84,6 +87,7 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
                                     key={date}
                                     onClick={() => {
                                         setSelectedDate(date);
+                                        console.log(date);
                                         setSelectedHour(null);
                                         setSelectedSlotId(null);
                                     }}
@@ -102,7 +106,7 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
                                     }}
                                 >
                                     <span style={{ fontSize: 12 }}>{weekday}</span>
-                                    <strong style={{ fontSize: 16 }}>{d.getDate()}</strong>
+                                    <strong style={{ fontSize: 16 }}>{day}</strong>
                                 </Box>
                             );
                         })}
@@ -121,6 +125,7 @@ export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProp
                                     onClick={() => {
                                         if (!isAvailable) return;
                                         setSelectedHour(hour);
+                                        console.log(hour);
                                         setSelectedSlotId(slot?.id ?? null);
                                     }}
                                     sx={{

@@ -38,8 +38,8 @@ interface UserInfoPanelProps {
 
 export default function UserInfoPanel({
     // slotId,
-    // date,
-    // hour,
+    date,
+    hour,
     error,
     // onBack,
     onConfirm,
@@ -87,6 +87,26 @@ export default function UserInfoPanel({
         }));
     };
 
+    function formatAppointment(date: string, hour: string) {
+        const [year, month, day] = date.split("-").map(Number);
+
+        // console.log("DATE: " + date);
+        // console.log("HOUR:" + hour);
+
+        const d = new Date(year, month - 1, day); // <-- Sempre no fuso local
+
+        const weekday = d.toLocaleDateString("pt-BR", { weekday: "long" });
+        const monthName = d.toLocaleDateString("pt-BR", { month: "long" });
+
+        return `${capitalize(weekday)}, ${day} de ${monthName}, às ${hour} horas`;
+    }
+
+    function capitalize(str: string) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    const message = formatAppointment(date, hour);
+
     const isValid = !errors.name && !errors.email && !errors.phone &&
         form.name && form.email && form.phone;
 
@@ -127,7 +147,7 @@ export default function UserInfoPanel({
                     variant="body1"
                     sx={{ mb: 1, fontWeight: 600, textAlign: "center" }}
                 >
-                    Confirme seus dados pessoais
+                    { message }
                 </Typography>
 
                 {/* Nome */}
