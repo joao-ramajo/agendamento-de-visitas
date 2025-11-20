@@ -2,9 +2,8 @@
 
 echo "Iniciando instalação do projeto Loop..."
 
-# ===========================
-# COPIAR ENV DO BACKEND
-# ===========================
+rm backend/.env
+
 if [ ! -f backend/.env ]; then
   echo "Criando backend/.env..."
   cp -f backend/.env.example backend/.env
@@ -26,7 +25,7 @@ docker compose down
 docker compose up -d
 
 echo "Aguardando containers iniciarem..."
-sleep 5
+sleep 3
 
 docker exec -it api composer install
 
