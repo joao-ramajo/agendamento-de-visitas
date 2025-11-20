@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import type { Slot } from "../../types/Slot";
 import { useSlots } from "../../hooks/useSlots";
