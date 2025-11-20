@@ -11,6 +11,13 @@ O sistema permite que usuários:
 
 ---
 
+## Deploy
+
+- **Frontend (Vercel):** https://loop-teste-tecnico.vercel.app/
+- **Backend (Railway):** https://loop-teste-tecnico-production.up.railway.app/api/v1/health
+
+---
+
 
 ## Tecnologias Utilizadas
 
