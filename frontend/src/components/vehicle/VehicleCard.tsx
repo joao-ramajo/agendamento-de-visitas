@@ -20,7 +20,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
     return (
         <Card
             component={Link}
-            to={`/vehicle/${id}`}
+            to={`/veiculo/${id}`}
             state={{
                 vehicle: {
                     id,

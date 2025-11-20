@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     element: <VehiclesPage />,
   },
   {
-    path: "/vehicle/:id",
+    path: "/veiculo/:id",
     element: <VehicleSchedulePage />,
   },
   {
