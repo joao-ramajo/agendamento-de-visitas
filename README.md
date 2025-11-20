@@ -215,4 +215,4 @@ Nele é possível ver o funcionamento completo do script de setup, que realiza a
 - Criação das estruturas necessárias
 - Inicialização do servidor
 
-[Veja aqui](./docs/setup-video.mp4)
+[Veja aqui](https://youtu.be/OPgffkzMqbk)
