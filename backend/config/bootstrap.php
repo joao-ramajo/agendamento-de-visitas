@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$allowedOrigin = 'https://loop-teste-tecnico-production.up.railway.app';
+$allowedOrigin = 'https://loop-teste-tecnico.vercel.app';
 $origin = $_SERVER['HTTP_ORIGIN'] ?? null;
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 
