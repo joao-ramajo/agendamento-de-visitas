@@ -15,13 +15,7 @@ interface SchedulePanelProps {
 
 export default function SchedulePanel({ vehicleId, onSelect }: SchedulePanelProps) {
 
-    const { data: slots, isLoading, error } = useSlots(vehicleId);
-
-    const [openError, setOpenError] = useState(false);
-
-    useEffect(() => {
-        if (error) setOpenError(true);
-    }, [error]);
+    const { data: slots, isLoading } = useSlots(vehicleId);
 
     const [selectedDate, setSelectedDate] = useState<string | null>(null);
     const [selectedHour, setSelectedHour] = useState<string | null>(null);
